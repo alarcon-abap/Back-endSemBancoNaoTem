@@ -133,7 +133,7 @@ public class PessoaFisicaDAO {
 
     try {
         connection = conectorBD.getConnection();
-        connection.setAutoCommit(false); // Inicia uma transação
+        connection.setAutoCommit(false); 
 
         // Inserir na tabela Pessoa
         String sqlPessoa = "INSERT INTO Pessoa (nome, logradouro, cidade, estado, telefone, email) VALUES (?, ?, ?, ?, ?, ?)";
@@ -166,11 +166,11 @@ public class PessoaFisicaDAO {
         statement.setString(8, pessoaFisica.getEmail());
         statement.executeUpdate();
 
-        connection.commit(); // Confirma a transação
+        connection.commit(); 
     } catch (SQLException e) {
         if (connection != null) {
             try {
-                connection.rollback(); // Desfaz a transação em caso de erro
+                connection.rollback(); 
             } catch (SQLException ex) {
             }
         }
@@ -222,7 +222,7 @@ public class PessoaFisicaDAO {
        } catch (SQLException e) {
            if (connection != null) {
                try {
-                   connection.rollback(); // Desfaz a transação em caso de erro
+                   connection.rollback(); 
                } catch (SQLException ex) {
                }
            }
@@ -326,10 +326,9 @@ public class PessoaFisicaDAO {
             }
 
         } catch (SQLException e) {
-            // Tratar exceção, se necessário
+            
         } finally {
-            // Fechar recursos (ResultSet, PreparedStatement, Connection), se necessário
-        }
+                    }
 
         return pessoaFisica;
     }
@@ -351,14 +350,14 @@ public class PessoaFisicaDAO {
 
         while (resultSetPessoaFisica.next()) {
             PessoaFisica pessoaFisica = new PessoaFisica();
-            pessoaFisica.setId(resultSetPessoaFisica.getInt("idPessoaFisica")); // Verifique se o nome da coluna está correto
-            pessoaFisica.setNome(resultSetPessoaFisica.getString("nome")); // Verifique se o nome da coluna está correto
-            pessoaFisica.setCpf(resultSetPessoaFisica.getString("CPF")); // Verifique se o nome da coluna está correto
-            pessoaFisica.setLogradouro(resultSetPessoaFisica.getString("logradouro")); // Verifique se o nome da coluna está correto
-            pessoaFisica.setCidade(resultSetPessoaFisica.getString("cidade")); // Verifique se o nome da coluna está correto
-            pessoaFisica.setEstado(resultSetPessoaFisica.getString("estado")); // Verifique se o nome da coluna está correto
-            pessoaFisica.setTelefone(resultSetPessoaFisica.getString("telefone")); // Verifique se o nome da coluna está correto
-            pessoaFisica.setEmail(resultSetPessoaFisica.getString("email")); // Verifique se o nome da coluna está correto
+            pessoaFisica.setId(resultSetPessoaFisica.getInt("idPessoaFisica")); 
+            pessoaFisica.setNome(resultSetPessoaFisica.getString("nome"));
+            pessoaFisica.setCpf(resultSetPessoaFisica.getString("CPF")); 
+            pessoaFisica.setLogradouro(resultSetPessoaFisica.getString("logradouro")); 
+            pessoaFisica.setCidade(resultSetPessoaFisica.getString("cidade")); 
+            pessoaFisica.setEstado(resultSetPessoaFisica.getString("estado")); 
+            pessoaFisica.setTelefone(resultSetPessoaFisica.getString("telefone")); 
+            pessoaFisica.setEmail(resultSetPessoaFisica.getString("email"));
             // Definir outros atributos da pessoa física, se houver
             
             pessoasFisicas.add(pessoaFisica);
